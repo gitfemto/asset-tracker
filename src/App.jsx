@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>IT Asset Tracker</h1>
+      <h1>Taufik Asset Tracker</h1>
 
       <div>
         <input
