@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 function App() {
   const [assetName, setAssetName] = useState("");
   const [assetType, setAssetType] = useState("");
+  const [assets, setAssets] = useState([]);
 
-  const [assets, setAssets] = useState([
-    { assetName: "DC01", assetType: "VM" },
-    { assetName: "FGT01", assetType: "Firewall" }
-  ]);
+  useEffect(() => {
+    fetch("https://asset-mt-api-b4gmccerf9dhdaev.southeastasia-01.azurewebsites.net/api/GetAssets")
+      .then((res) => res.json())
+      .then((data) => setAssets(data))
+      .catch((err) => console.error(err));
+  }, []);
 
   const addAsset = () => {
     if (!assetName || !assetType) return;
